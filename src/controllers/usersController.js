@@ -119,7 +119,7 @@ const usersController = {
                 if(usuario){
                     let validationPass = bcrypt.compareSync(req.body.password,usuario.pass);
                     if (validationPass){
-                        delete usuario.pass;
+                        usuario.pass = '';
                         req.session.userLogged = usuario;
                         return res.redirect('/users/profile');
                     }
